@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f4ec">
+<title>Where was I? · Demo workspace</title>
+<style>
+:root{color-scheme:light;--paper:#f6f4ec;--card:#fffef9;--ink:#162d29;--forest:#194b42;--soft:#5d6a60;--line:#d1d5c9;--mint:#dcead4;--accent:#ffdf9a;--serif:Georgia,"Times New Roman",serif;--sans:"Inter","Aptos","Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);min-height:100vh}
+button,textarea{font:inherit;color:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed}button:focus-visible,a:focus-visible,summary:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid #337c87;outline-offset:3px}
+button{touch-action:manipulation}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[hidden]{display:none!important}
+.top{border-bottom:1px solid var(--line);background:#faf9f2}
+.frame{max-width:1320px;margin:auto;padding:0 clamp(18px,4.6vw,80px)}
+.bar{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.identity,.status,.top-right,.reader-meta,.section-top,.actions,.source-name,.paused-symbol,.pill{display:flex;align-items:center}
+.identity{gap:11px;font:700 24px/1 var(--serif);letter-spacing:-1.3px}
+.symbol{background:var(--forest);border-radius:9px;width:34px;height:34px;display:grid;place-items:center;position:relative}
+.symbol:before{content:"";width:12px;height:18px;background:#e2efce;clip-path:polygon(0 0,100% 0,100% 100%,50% 75%,0 100%);transform:rotate(9deg)}
+.top-right{gap:20px}.status{gap:7px;color:var(--soft);font-size:12px}.dot{width:7px;height:7px;border-radius:50%;background:#61936d}
+.top-right details{position:relative}.top-right summary{cursor:pointer;color:var(--forest);font-size:13px;font-weight:650;list-style:none;border-bottom:1px dotted var(--forest)}summary::-webkit-details-marker{display:none}
+.about{position:absolute;right:0;top:28px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 18px;width:min(290px,85vw);box-shadow:0 8px 28px #16342b15;font-size:13px;z-index:5}.about p{margin:0}
+main{padding-top:36px!important;padding-bottom:32px!important}
+.intro{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px}.eyebrow,.kicker{display:block;font-size:10px;line-height:1.4;letter-spacing:1.7px;text-transform:uppercase;font-weight:750;color:#50665a}
+h1,h2,h3,p{margin:0}h1{font:500 clamp(38px,5.4vw,68px)/1.07 var(--serif);letter-spacing:-.065em;margin:6px 0 7px}
+.intro p{margin:0;color:var(--soft);font-size:15px}.project-tag{font-size:12px;color:var(--forest);padding:6px 11px;border:1px solid #bdcbbb;border-radius:99px;white-space:nowrap}
+.grid{display:grid;grid-template-columns:minmax(0,1.78fr) minmax(285px,1fr);gap:20px;align-items:start}
+.reader,.capture{background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden}
+.tabbar{display:flex;align-items:center;gap:2px;background:#eaece3;padding:9px 12px 0;border-bottom:1px solid var(--line);min-height:52px;overflow-x:auto}
+.tabs{display:flex;align-items:stretch;gap:4px;min-width:0;overflow-x:auto}
+.tab{border:1px solid transparent;background:transparent;white-space:nowrap;padding:10px 12px;font-size:12px;font-weight:650;color:#576459;border-radius:8px 8px 0 0;display:flex;align-items:center;gap:7px}
+.tab[aria-selected=true]{background:var(--card);border-color:var(--line);border-bottom-color:var(--card);color:var(--forest)}
+.docicon{display:inline-block;width:9px;height:12px;border:1px solid currentColor;border-radius:1px;position:relative;opacity:.85}.docicon:after{content:"";position:absolute;top:4px;left:2px;right:2px;border-top:1px solid currentColor;box-shadow:0 2px 0 currentColor}
+.add{margin-left:auto;border:0;background:transparent;font-size:24px;color:var(--forest);min-width:38px;min-height:38px;border-radius:7px;line-height:1}.add:hover,.plain:hover{background:#e0e6da}
+.content{padding:clamp(23px,3.4vw,48px);padding-top:32px}.reader-meta{justify-content:space-between;gap:12px;margin-bottom:16px}.page-no{font:12px/1.4 var(--serif);color:#667168;font-style:italic}
+.article-title{font:500 clamp(30px,3.2vw,46px)/1.05 var(--serif);letter-spacing:-.05em;margin:0 0 14px;overflow-wrap:anywhere}
+.deck{font-size:14px;color:var(--soft);margin-bottom:20px;max-width:58ch}.divider{border:0;border-top:1px solid var(--line);margin:0 0 19px}
+article{font:17px/1.55 var(--serif);color:#263a33;overflow-wrap:anywhere}article p+p{margin-top:14px}article::selection,article *::selection{background:#f9de93;color:#132e2a}mark{background:#ffe098;color:inherit;box-decoration-break:clone;-webkit-box-decoration-break:clone;border-bottom:1px solid #b58a2f}
+.reader-foot{border-top:1px solid #e0e3d8;background:#f9f9f0;min-height:50px;padding:12px 20px;display:flex;align-items:center;gap:9px;color:var(--soft);font-size:12px}
+.indicator{width:8px;height:8px;border:2px solid #7c927c;transform:rotate(45deg);flex:none}
+.capture-head{background:var(--forest);color:#f7fae9;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.capture-head h2{font:500 29px/1.15 var(--serif);letter-spacing:-1.2px}.capture-head .pill{font-size:10px;letter-spacing:.8px;text-transform:uppercase;gap:6px;color:#e1efcd}.capture-head .dot{background:#b8dca5;width:6px;height:6px}
+.capture-body{padding:19px 22px 21px}.section-top{gap:8px;margin-bottom:8px;font-size:14px;font-weight:700}.step{display:inline-grid;place-items:center;border:1px solid #bdc9b9;background:#edf1e6;border-radius:50%;width:21px;height:21px;font-size:11px;flex:none}
+.hint,.saved-hint{color:var(--soft);font-size:13px;line-height:1.5}.quote{margin:9px 0 0;padding:9px 12px 9px 13px;background:#f8f2dc;border-left:3px solid #d4b767;font:italic 15px/1.45 var(--serif);max-height:126px;overflow:auto;overflow-wrap:anywhere}
+.plain{background:transparent;border:1px solid #bfccbc;color:var(--forest);font-size:12px;font-weight:650;padding:7px 10px;border-radius:6px;margin-top:9px}
+.note-block{margin-top:21px}.notebox{width:100%;border:1px solid #bac6b8;border-radius:7px;background:white;padding:10px 11px;font-size:14px;line-height:1.5;resize:vertical;min-height:74px;display:block}.notebox::placeholder{color:#677568}
+.note-help{font-size:12px;line-height:1.5;color:var(--soft);margin-top:6px}
+.actions{margin-top:19px;border-top:1px solid var(--line);padding-top:15px;display:block}
+.primary{background:var(--forest);color:#fffef9;border:1px solid var(--forest);border-radius:8px;min-height:43px;width:100%;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px}.primary:hover{background:#113a32}.primary[aria-disabled=true]{background:#e2e9dc;border-color:#c9d3c4;color:#465749}.pause-icon{width:10px;height:12px;display:inline-block;border-left:3px solid currentColor;border-right:3px solid currentColor}
+.saved-hint{margin-top:9px;font-size:12px}.caption{font-size:12px;color:var(--soft);margin-top:12px}.caption strong{color:var(--ink)}
+.shelf{padding:10px 16px;border-bottom:1px solid var(--line);background:#f5f7ed;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px}.shelf button{background:white;border:1px solid #bdcaba;border-radius:6px;font-size:12px;padding:4px 8px}.shelf button[aria-pressed=true]{background:var(--mint)}
+.paused-view{min-height:390px;display:grid;align-content:center;justify-items:center;text-align:center;padding:30px;background:repeating-linear-gradient(0deg,#f8f8ef,#f8f8ef 26px,#e7ecdf 27px,#f8f8ef 28px)}.paused-card{width:100%;max-width:380px;text-align:left;background:#fffef9;border:1px solid #c5cfbf;border-radius:10px;padding:23px;box-shadow:4px 5px 0 #dce4d5}.paused-card h2{font:500 35px/1.1 var(--serif);letter-spacing:-.05em;margin:7px 0}.paused-card p{font-size:14px;color:var(--soft)}.paused-card ul{padding-left:18px;margin-bottom:0;font-size:13px;color:var(--forest)}
+.summary-label{font-size:11px;color:var(--soft);font-weight:700;letter-spacing:.5px;text-transform:uppercase}.resume-note{font-size:15px;overflow-wrap:anywhere;white-space:pre-wrap;margin:5px 0 20px}.paused-symbol{background:var(--mint);width:38px;height:38px;justify-content:center;border-radius:9px;color:var(--forest);margin-bottom:14px}
+.notice{background:#e3efd9;color:#295037;padding:9px 16px;font-size:13px;border-bottom:1px solid #c7d7bd}.footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:17px 0;color:var(--soft);font-size:12px}.reset-btn{border:0;padding:5px 0;background:transparent;white-space:nowrap;text-decoration:underline;text-underline-offset:3px;color:#4b6554;font-size:12px}
+@media(min-width:1550px){main{padding-top:52px!important}}
+@media(max-width:780px){.grid{grid-template-columns:1fr}.intro{align-items:start}.capture-body{padding:20px}.frame{padding-left:20px;padding-right:20px}main{padding-top:24px!important}.content{padding:24px}.intro{margin-bottom:17px}.project-tag{display:none}.bar{min-height:60px}.status{display:none}.grid{gap:14px}.footer{align-items:flex-start}.paused-view{min-height:240px}}
+@media(max-width:430px){.frame{padding-left:13px;padding-right:13px}.content{padding:20px}.tab{padding:9px 8px}.tabbar{padding-left:7px;padding-right:4px}.identity{font-size:23px}.intro p{font-size:14px}.capture-head{padding:17px 20px}.footer{font-size:11px}}
+@media(prefers-reduced-motion:no-preference){button{transition:background-color .14s}.notice{animation:appear .3s ease-out}@keyframes appear{from{opacity:0}to{opacity:1}}}
+</style>
+</head>
+<body>
+<header class="top"><div class="bar frame">
+ <div class="identity"><span class="symbol" aria-hidden="true"></span>Where was I?</div>
+ <div class="top-right"><span class="status"><i class="dot" aria-hidden="true"></i><span id="storageStatus">Saved in this browser</span></span><details><summary>About this demo</summary><div class="about"><p>This sample workspace recreates the experience with three built-in sources. The Chrome extension in the extension folder works with your actual browser tabs.</p></div></details></div>
+</div></header>
+<main class="frame">
+ <header class="intro"><div><span class="eyebrow">Interactive demo</span><h1>Desk divider study</h1><p>Keep the exact passage, open sources, and next step you want to return to.</p></div><span class="project-tag">Sample research workspace</span></header>
+ <div class="grid">
+ <section class="reader" aria-label="Sample research sources">
+  <div id="reading">
+   <div class="tabbar"><div class="tabs" id="tabs" role="tablist" aria-label="Open sample sources"></div><button class="add" id="add" aria-label="Manage open sources" aria-controls="shelf" aria-expanded="false" title="Manage open sources">+</button></div>
+   <div class="shelf" id="shelf" hidden></div>
+   <div id="notice" class="notice" role="status" hidden></div>
+   <div class="content" id="readerPanel" role="tabpanel" tabindex="0">
+    <div class="reader-meta"><span class="kicker" id="kind"></span><span class="page-no" id="page"></span></div>
+    <h2 class="article-title" id="title"></h2><p class="deck" id="deck"></p><hr class="divider">
+    <article id="body" aria-label="Selectable source text"></article>
+   </div>
+   <div class="reader-foot"><span class="indicator" aria-hidden="true"></span><span id="readtip">Drag across any passage to save your place.</span></div>
+  </div>
+  <div class="paused-view" id="pausedView" hidden><div class="paused-card"><div class="paused-symbol" aria-hidden="true"><span class="pause-icon"></span></div><span class="kicker">Paused workspace</span><h2>Your place is saved.</h2><p>These sample sources will reopen together.</p><ul id="pausedTabs"></ul></div></div>
+ </section>
+ <aside class="capture" aria-labelledby="captureTitle"><header class="capture-head"><h2 id="captureTitle">Pause point</h2><span class="pill"><i class="dot" aria-hidden="true"></i><span id="stateLabel">Draft</span></span></header>
+  <div id="editor" class="capture-body">
+   <div class="section-top"><span class="step" aria-hidden="true">1</span><span>Select a passage</span></div>
+   <div id="noQuote" class="hint">Highlight a line in the source, or try the sample passage below.</div>
+   <div id="quoteDetail" hidden><p class="hint" id="quoteSource"></p><blockquote class="quote" id="currentQuote"></blockquote></div>
+   <button class="plain" id="sample">Use a sample passage</button>
+   <div class="note-block"><label class="section-top" for="note"><span class="step" aria-hidden="true">2</span>Leave a next step</label><textarea class="notebox" id="note" maxlength="2000" placeholder="What should you do when you return?"></textarea><button type="button" class="plain" id="suggest">Use a sample note</button></div>
+   <div class="actions"><button id="pause" class="primary" aria-disabled="true"><span class="pause-icon" aria-hidden="true"></span>Pause workspace</button><p class="saved-hint" id="pauseHint">Add a passage and a note to pause.</p></div>
+  </div>
+  <div id="saved" class="capture-body" hidden><div class="summary-label">Your next step</div><p class="resume-note" id="savedNote"></p><div class="summary-label" id="savedSource"></div><blockquote class="quote" id="savedQuote"></blockquote><div class="actions"><button id="resume" class="primary"><span aria-hidden="true">↗</span>Resume workspace</button><p class="saved-hint">Reopen the saved sources and jump to your highlight.</p></div></div>
+ </aside>
+ </div>
+ <div class="footer"><span>Sample sources and notes stay on this device.</span><button class="reset-btn" id="reset">Reset demo</button></div>
+ <span role="status" id="announce" class="visually-hidden" aria-live="polite"></span>
+</main>
+<script>
+'use strict';
+const sources={
+ brief:{tab:'Design brief',kind:'Project document',title:'Testing the divider',deck:'A student design team is comparing two tabletop dividers for a shared study space.',paragraphs:[
+ 'The first prototype uses a folded cardboard frame and a removable felt panel. Its purpose is to give students a little more privacy without taking up the whole desk.',
+ 'Both divider designs will be tested at the same desk. Keep the speaker volume and microphone distance the same for every trial.',
+ 'Run one measurement without a divider before testing either design. Record the setup alongside each reading so another team member can repeat it.'
+ ],sample:'Keep the speaker volume and microphone distance the same for every trial.',note:'Check the microphone distance in the trial log before comparing designs.'},
+ log:{tab:'Trial log',kind:'Notebook entry',title:'First trial notes',deck:'A sample notebook entry from the team’s first setup session.',paragraphs:[
+ 'We placed the speaker on the far side of the desk and marked the microphone position with tape. A photo of the setup will help us place the equipment again.',
+ 'The second trial used a different microphone position. Repeat it from the marked spot before comparing the readings.',
+ 'For the next session, bring the felt panel and the cardboard frame to the same desk. Use the first trial as the reference for the equipment positions.'
+ ],sample:'Repeat it from the marked spot before comparing the readings.',note:'Repeat trial two using the original tape mark.'},
+ outline:{tab:'Report outline',kind:'Writing draft',title:'Explaining the results',deck:'Working notes for a short design report the team will share after testing.',paragraphs:[
+ 'Start the report with the design question and a sketch of the two prototypes. A reader should understand what changed between the designs.',
+ 'Use the same scale for both trial charts. Label the baseline and explain any readings the team excluded from the comparison.',
+ 'End with one specific revision for the next prototype. Tie the revision to an observation in the trial log.'
+ ],sample:'Label the baseline and explain any readings the team excluded from the comparison.',note:'Find the baseline in the trial log and label it on the chart.'}
+};
+const key='where-was-i.demo.v1';
+const $=id=>document.getElementById(id);
+const sourceIds=Object.keys(sources);
+const fresh=()=>({tabs:['brief','log'],active:'brief',anchor:null,note:'',paused:false});
+const full=id=>sources[id].paragraphs.join('');
+function validSaved(obj){
+ if(!obj||!Array.isArray(obj.tabs)||!obj.tabs.length||!obj.tabs.every(id=>sourceIds.includes(id))||!obj.tabs.includes(obj.active)||typeof obj.note!=='string'||typeof obj.paused!=='boolean')return false;
+ const a=obj.anchor;
+ if(a!==null&&(!a||!obj.tabs.includes(a.id)||!Number.isInteger(a.start)||!Number.isInteger(a.end)||a.start<0||a.end<=a.start||a.end>full(a.id).length))return false;
+ return !obj.paused||(a!==null&&obj.note.trim().length>0);
+}
+let state=fresh(),restored=false;
+try{const data=JSON.parse(localStorage.getItem(key));if(validSaved(data))state=data;}catch{}
+function persist(){try{localStorage.setItem(key,JSON.stringify(state));}catch{$('storageStatus').textContent='Saved for this visit';}}
+function tell(message){$('announce').textContent=message;}
+function quote(){return state.anchor?full(state.anchor.id).slice(state.anchor.start,state.anchor.end):'';}
+function renderCard(){
+ const a=state.anchor,ready=!!a&&!!state.note.trim();$('noQuote').hidden=!!a;$('quoteDetail').hidden=!a;
+ if(a){$('quoteSource').textContent=sources[a.id].tab;$('currentQuote').textContent=quote();}
+ $('pause').setAttribute('aria-disabled',String(!ready));
+ $('pauseHint').textContent=ready?'Your open sources, highlight, and note will be saved.':a?'Add a next-step note to pause.':state.note.trim()?'Select a passage to pause.':'Add a passage and a note to pause.';
+ $('stateLabel').textContent=state.paused?'Paused':restored?'Resumed':'Draft';
+ if(state.paused){$('savedNote').textContent=state.note;$('savedSource').textContent=sources[a.id].tab+' · saved passage';$('savedQuote').textContent=quote();}
+}
+function renderArticle(){
+ const d=sources[state.active],body=$('body'),a=state.anchor;
+ $('title').textContent=d.title;$('deck').textContent=d.deck;$('kind').textContent=d.kind;$('page').textContent='Source '+(sourceIds.indexOf(state.active)+1)+' of '+sourceIds.length;
+ $('readerPanel').setAttribute('aria-labelledby','tab-'+state.active);body.replaceChildren();let offset=0;
+ for(const line of d.paragraphs){const p=document.createElement('p'),start=a&&a.id===state.active?Math.max(0,a.start-offset):0,end=a&&a.id===state.active?Math.min(line.length,a.end-offset):0;
+ if(end>start){p.append(line.slice(0,start));const m=document.createElement('mark');m.textContent=line.slice(start,end);p.append(m,line.slice(end));}else{p.textContent=line;}body.append(p);offset+=line.length;}
+}
+function switchTab(id,focus=false){state.active=id;persist();renderSources();renderArticle();if(focus)$('tab-'+id).focus();}
+function renderSources(){
+ const tabs=$('tabs');tabs.replaceChildren();state.tabs.forEach((id,i)=>{const b=document.createElement('button');b.type='button';b.id='tab-'+id;b.className='tab';b.setAttribute('role','tab');b.setAttribute('aria-controls','readerPanel');b.setAttribute('aria-selected',String(id===state.active));b.tabIndex=id===state.active?0:-1;
+ const icon=document.createElement('span');icon.className='docicon';icon.setAttribute('aria-hidden','true');b.append(icon,sources[id].tab);
+ b.onclick=()=>switchTab(id,true);b.onkeydown=e=>{let target;if(e.key==='ArrowRight')target=(i+1)%state.tabs.length;if(e.key==='ArrowLeft')target=(i+state.tabs.length-1)%state.tabs.length;if(e.key==='Home')target=0;if(e.key==='End')target=state.tabs.length-1;if(target!==undefined){e.preventDefault();switchTab(state.tabs[target],true);}};tabs.append(b);});
+ const shelf=$('shelf');shelf.replaceChildren('Open sources ');
+ for(const id of sourceIds){const b=document.createElement('button');b.type='button';const isOpen=state.tabs.includes(id);b.textContent=(isOpen?'✓ ':'+ ')+sources[id].tab;b.setAttribute('aria-pressed',String(isOpen));b.disabled=isOpen&&state.tabs.length===1;
+ b.onclick=()=>{if(isOpen){state.tabs=state.tabs.filter(v=>v!==id);if(state.anchor?.id===id)state.anchor=null;if(state.active===id)state.active=state.tabs[0];}else{state.tabs.push(id);state.active=id;}persist();render();const buttons=[...shelf.querySelectorAll('button')];(buttons.find(el=>el.textContent.endsWith(sources[id].tab)&&!el.disabled)||$('add')).focus();};shelf.append(b);}
+}
+function render(){
+ $('reading').hidden=state.paused;$('editor').hidden=state.paused;$('pausedView').hidden=!state.paused;$('saved').hidden=!state.paused;$('note').value=state.note;
+ $('notice').hidden=!restored||state.paused;if(restored)$('notice').textContent='Workspace resumed. Your sources, passage, and next step are back.';
+ if(state.paused){const ul=$('pausedTabs');ul.replaceChildren();for(const id of state.tabs){const li=document.createElement('li');li.textContent=sources[id].tab;ul.append(li);}}
+ else{renderSources();renderArticle();}renderCard();
+}
+function captureSelection(){
+ if(state.paused)return;const sel=window.getSelection();if(!sel||sel.rangeCount!==1||sel.isCollapsed)return;
+ const r=sel.getRangeAt(0),body=$('body');if(!body.contains(r.startContainer)||!body.contains(r.endContainer))return;
+ const prefix=document.createRange();prefix.selectNodeContents(body);prefix.setEnd(r.startContainer,r.startOffset);
+ const start=prefix.toString().length,end=start+r.toString().length;if(start===end||!full(state.active).slice(start,end).trim())return;
+ if(state.anchor?.id===state.active&&state.anchor.start===start&&state.anchor.end===end)return;
+ state.anchor={id:state.active,start,end};persist();renderCard();tell('Passage saved from '+sources[state.active].tab+'.');
+}
+document.addEventListener('selectionchange',captureSelection);document.addEventListener('pointerup',captureSelection);document.addEventListener('keyup',captureSelection);
+$('sample').onclick=()=>{const d=sources[state.active],start=full(state.active).indexOf(d.sample);state.anchor={id:state.active,start,end:start+d.sample.length};window.getSelection()?.removeAllRanges();renderArticle();renderCard();persist();tell('Sample passage highlighted in '+d.tab+'.');};
+$('suggest').onclick=()=>{state.note=sources[state.anchor?.id||state.active].note;$('note').value=state.note;renderCard();persist();$('note').focus();tell('Sample next step added.');};
+$('note').onfocus=()=>{if(state.anchor?.id===state.active)renderArticle();};
+$('note').oninput=e=>{state.note=e.target.value;renderCard();persist();};
+$('add').onclick=()=>{const shelf=$('shelf');shelf.hidden=!shelf.hidden;$('add').setAttribute('aria-expanded',String(!shelf.hidden));};
+$('pause').onclick=()=>{if(!state.anchor||!state.note.trim()){tell($('pauseHint').textContent);(state.anchor?$('note'):$('sample')).focus();return;}state.paused=true;restored=false;persist();render();$('resume').focus();tell('Workspace paused.');};
+$('resume').onclick=()=>{state.paused=false;restored=true;state.active=state.anchor.id;persist();render();$('readerPanel').focus({preventScroll:true});const m=$('body').querySelector('mark');if(m)m.scrollIntoView({block:'nearest'});tell('Workspace restored to your highlighted passage.');};
+$('reset').onclick=()=>{if(!confirm('Clear this demo’s saved passage and note and restore its original source tabs?'))return;state=fresh();restored=false;$('shelf').hidden=true;$('add').setAttribute('aria-expanded','false');window.getSelection()?.removeAllRanges();persist();render();$('sample').focus();tell('Demo reset.');};
+render();persist();
+</script>
+</body>
+</html>
