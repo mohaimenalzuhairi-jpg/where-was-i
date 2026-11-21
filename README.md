@@ -1,5 +1,3 @@
-# where-was-i
-Pause a research task and return to your passage, related tabs, and next step. Try the interactive demo or use the Chrome extension.
 # Where Was I?
 
 Pause a research task with a passage, the source tabs you choose, and a short note about what to do next. Resume with the evidence and the reminder together.
