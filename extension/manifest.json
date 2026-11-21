@@ -9,3 +9,30 @@
   "permissions": ["activeTab", "scripting", "storage", "sidePanel"],
   "optional_permissions": ["tabs"]
 }
+{
+  "manifest_version": 3,
+  "name": "Where Was I?",
+  "description": "Save one reading checkpoint, a next step, and the source tabs you choose. Resume on the same passage.",
+  "version": "1.0.0",
+  "minimum_chrome_version": "116",
+  "action": {
+    "default_title": "Where Was I?",
+    "default_popup": "popup.html"
+  },
+  "side_panel": {
+    "default_path": "card.html"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "sidePanel"
+  ],
+  "optional_permissions": [
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "worker.js",
+    "type": "module"
+  }
+}
