@@ -1,0 +1,28 @@
+:root {color-scheme:light; --paper:#fcfaf4; --ink:#1e322a; --muted:#526359; --line:#dbdfd4; --green:#164e3c; font:14px/1.45 "Segoe UI",system-ui,sans-serif;}
+* {box-sizing:border-box;}
+body {margin:0; width:352px; background:var(--paper); color:var(--ink);}
+body.side {width:auto; max-width:550px;}
+header {display:flex; align-items:center; gap:10px; padding:18px 20px 14px; border-bottom:1px solid var(--line);}
+.brand-mark {display:grid; place-items:center; background:#d8ebaa; color:var(--green); width:32px; height:32px; border-radius:9px; font:700 25px/1 system-ui;}
+h1 {margin:0; font:600 23px/1.2 Georgia,serif; letter-spacing:-.6px;}
+main {padding:18px 20px 4px;}
+h2, label[for], legend {display:block; margin:0 0 8px; font-size:13px; font-weight:650;}
+blockquote {margin:0; padding:10px 12px; background:#eef2e5; border-left:3px solid #769451; border-radius:0 6px 6px 0; max-height:112px; overflow:auto; overflow-wrap:anywhere; font:16px/1.45 Georgia,serif;}
+.caption {margin:6px 0 16px; font-size:12px; color:var(--muted); overflow-wrap:anywhere;}
+.big-note {margin:0 0 14px; overflow-wrap:anywhere; font:500 23px/1.25 Georgia,serif;}
+textarea {font:inherit; color:var(--ink); background:white; width:100%; resize:vertical; min-height:58px; max-height:100px; padding:8px 10px; border:1px solid #a9b4a5; border-radius:7px;}
+button {font:inherit; cursor:pointer;}
+.primary {width:100%; border:0; border-radius:8px; padding:11px 12px; display:flex; align-items:center; justify-content:space-between; background:var(--green); color:white; font-weight:650;}
+.primary:hover {background:#226048;}
+.primary:disabled {cursor:default; opacity:.48;}
+.text-button {background:transparent; border:0; color:var(--green); padding:7px 0; text-align:left; text-decoration:underline; text-underline-offset:3px; font-size:13px;}
+.actions {display:flex; justify-content:space-between; margin-top:3px;}
+fieldset {margin:2px 0 10px; border:1px solid var(--line); border-radius:6px; padding:4px 8px; max-height:120px; overflow:auto;}
+legend {padding:0 4px; margin-bottom:1px; font-size:12px;}
+.tab-option {display:flex; gap:6px; align-items:flex-start; padding:3px 0; cursor:pointer; font-size:12px; overflow-wrap:anywhere;}
+.tab-option input {accent-color:var(--green);}
+.status {color:var(--muted); font-size:12px; margin:8px 0; overflow-wrap:anywhere;}
+.status:empty {margin:0;}
+footer {margin:10px 20px 14px; font-size:11px; color:var(--muted);}
+button:focus-visible,textarea:focus-visible,input:focus-visible {outline:2px solid #71502c; outline-offset:2px;}
+[hidden] {display:none !important;}
