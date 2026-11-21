@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Where Was I?</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="brand-mark" aria-hidden="true">↳</div><h1>Where Was I?</h1></header>
+<main>
+<section id="saved" hidden>
+  <h2>Next step</h2><p id="saved-note" class="big-note"></p>
+  <blockquote id="saved-quote"></blockquote><p id="saved-source" class="caption"></p>
+  <button id="resume" class="primary" type="button">Resume work <span aria-hidden="true">↗</span></button>
+  <div class="actions"><button id="replace" class="text-button" type="button">New checkpoint</button><button id="forget" class="text-button" type="button">Delete</button></div>
+</section>
+<form id="editor" hidden>
+  <h2 id="capture-label">Current passage</h2><blockquote id="preview">Reading the current page…</blockquote><p id="source" class="caption"></p>
+  <label for="note">What will you do next?</label>
+  <textarea id="note" required maxlength="240" rows="2" placeholder="Compare the two results…" autocomplete="off"></textarea>
+  <button id="choose" class="text-button" type="button">+ Choose related tabs</button>
+  <fieldset id="choices" hidden><legend>Include these tabs</legend><div id="choice-list"></div></fieldset>
+  <button id="save" class="primary" type="submit" disabled>Save checkpoint <span aria-hidden="true">↓</span></button>
+  <button id="cancel" class="text-button" type="button" hidden>Keep previous checkpoint</button>
+</form>
+<p id="status" class="status" role="status" aria-live="polite"></p>
+</main><footer>Stored on this device.</footer>
+<script type="module" src="popup.js"></script>
+</body></html>
